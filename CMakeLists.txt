@@ -293,8 +293,8 @@ if(CFI)
   # We use Chromium's copy of clang, which requires -fuse-ld=lld if building
   # with -flto. That, in turn, can't handle -ggdb.
   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fuse-ld=lld")
-  string(REPLACE "-ggdb" "-g" CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
-  string(REPLACE "-ggdb" "-g" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+  string(REPLACE "-ggdb" "" CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
+  string(REPLACE "-ggdb" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
   # -flto causes object files to contain LLVM bitcode. Mixing those with
   # assembly output in the same static library breaks the linker.
   set(OPENSSL_NO_ASM "1")
